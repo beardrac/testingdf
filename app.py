@@ -28,29 +28,31 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") != "shipping.cost":
+    if req.get("result").get("action") == "log.in":
+        result = req.get("result")
+        parameters = result.get("parameters")
+        accinfo = parameters.get("account-info")
+
+        name = {'1111':"Kathryn Janeway", '9999':"James Kirk", '1776':"Jonathan Archer", '1701':"Jean-Luc Picard", '2371':"Benjamin Sisko"}
+
+        speech = "Hello " + str(name[accinfo]) + "! How can I help you today?"
+
+        print("Response:")
+        print(speech)
+
         return {
-            "speech": "I am the walrus!",
-            "displayText": "I am the walrus!",
+            "speech": speech,
+            "displayText": speech,
+            #"data": {},
+            # "contextOut": [],
+            "source": "apiai-onlinestore-shipping"
+        }
+
+    else:
+        return {
+            "speech": "I'm sorry, I can not process your request. Please try again!",
+            "displayText": speech,
 	}
-    result = req.get("result")
-    parameters = result.get("parameters")
-    zone = parameters.get("shipping-zone")
-
-    cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
-
-    speech = "The cost of shipping to " + zone + " is " + str(cost[zone]) + " euros."
-
-    print("Response:")
-    print(speech)
-
-    return {
-        "speech": speech,
-        "displayText": speech,
-        #"data": {},
-        # "contextOut": [],
-        "source": "apiai-onlinestore-shipping"
-    }
 
 
 if __name__ == '__main__':
