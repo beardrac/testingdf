@@ -55,7 +55,7 @@ def makeWebhookResult(req):
 
         balance = {'1111':"$1,000", '9999':"$0.09", '1776':"$99", '1701':"$750", '2371':"$25,000"}
 
-        speech = "Hello " + str(name[accinfo]) + "! How can I help you today?"
+        speech = "Your current balance is " + str(balance[accinfo]) + "."
 
         print("Response:")
         print(speech)
