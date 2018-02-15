@@ -44,9 +44,30 @@ def makeWebhookResult(req):
             "speech": speech,
             "displayText": speech,
             #"data": {},
-            # "contextOut": [],
+            "contextOut": ['logged-in'],
             "source": "apiai-onlinestore-shipping"
         }
+    
+    elif req.get("result").get("action") == "check.balance":
+        result = req.get("result")
+        parameters = result.get("parameters")
+        accinfo = parameters.get("account-info")
+
+        balance = {'1111':"$1,000", '9999':"$0.09", '1776':"$99", '1701':"$750", '2371':"$25,000"}
+
+        speech = "Hello " + str(name[accinfo]) + "! How can I help you today?"
+
+        print("Response:")
+        print(speech)
+
+        return {
+            "speech": speech,
+            "displayText": speech,
+            #"data": {},
+            "contextOut": ['logged-in'],
+            "source": "apiai-onlinestore-shipping"
+        }
+
 
     else:
         return {
