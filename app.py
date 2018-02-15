@@ -51,7 +51,7 @@ def makeWebhookResult(req):
     elif req.get("result").get("action") == "check.balance":
         result = req.get("result")
         contexts = result.get("contexts")
-	parameters = contexts["parameters"]
+        parameters = contexts["parameters"]
         accinfo = parameters["account-info"]
 
         balance = {'1111':"$1,000", '9999':"$0.09", '1776':"$99", '1701':"$750", '2371':"$25,000"}
