@@ -44,14 +44,15 @@ def makeWebhookResult(req):
             "speech": speech,
             "displayText": speech,
             #"data": {},
-            "contextOut": [{"name":"logged-in", "lifespan":10, "parameters":{"account-info":accinfo}}],
+            "contextOut": [{"name":"logged-in", "lifespan":100, "parameters":{"account-info":accinfo}}],
             "source": "apiai-onlinestore-shipping"
         }
     
     elif req.get("result").get("action") == "check.balance":
         result = req.get("result")
-        parameters = result.get("contexts").find("parameters")
-        accinfo = parameters.find("account-info")
+        contexts = result.get("contexts")
+	parameters = contexts["parameters"]
+        accinfo = parameters["account-info"]
 
         balance = {'1111':"$1,000", '9999':"$0.09", '1776':"$99", '1701':"$750", '2371':"$25,000"}
 
