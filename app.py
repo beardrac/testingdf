@@ -44,7 +44,7 @@ def makeWebhookResult(req):
             "speech": speech,
             "displayText": speech,
             #"data": {},
-            "contextOut": ['logged-in'],
+            "contextOut": accinfo,
             "source": "apiai-onlinestore-shipping"
         }
     
@@ -64,7 +64,7 @@ def makeWebhookResult(req):
             "speech": speech,
             "displayText": speech,
             #"data": {},
-            "contextOut": ['logged-in'],
+            "contextOut": accinfo,
             "source": "apiai-onlinestore-shipping"
         }
 
