@@ -29,7 +29,10 @@ def webhook():
 
 def makeWebhookResult(req):
     if req.get("result").get("action") != "shipping.cost":
-        return {}
+        return {
+            "speech": "I am the walrus!",
+            "displayText": "I am the walrus!",
+	}
     result = req.get("result")
     parameters = result.get("parameters")
     zone = parameters.get("shipping-zone")
@@ -38,7 +41,7 @@ def makeWebhookResult(req):
 
     #speech = "The cost of shipping to " + zone + " is " + str(cost[zone]) + " euros."
     
-    speech = "I am the walrus!"
+    speech = "I am NOT the walrus!"
 
     print("Response:")
     print(speech)
